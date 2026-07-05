@@ -7,7 +7,7 @@ Pretty print builtin types for Odin lang
 - [x] union
 - [x] dynamic array
 - [ ] map
-- [ ] slice
+- [x] slice
 - [ ] endian specific integer
 - [ ] endian specific float
 - [ ] vector and matrix

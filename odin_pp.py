@@ -15,7 +15,7 @@ class OdinString(gdb.ValuePrinter):
         return self.__val['data'].string(encoding='utf-8', length=len)
 
 
-class OdinDynamicArray(gdb.ValuePrinter):
+class OdinSlice(gdb.ValuePrinter):
     def __init__(self, val):
         self.__val = val
 
@@ -48,7 +48,8 @@ class OdinUnion(gdb.ValuePrinter):
 pp = gdb.printing.RegexpCollectionPrettyPrinter('odin')
 
 pp.add_printer('odin_string', '^string$', OdinString)
-pp.add_printer('odin_dynamic_array', r'^\[dynamic][a-zA-Z0-9:_]+', OdinDynamicArray)
+pp.add_printer('odin_slice', r'^\[][a-zA-Z0-9:_]+', OdinSlice)
+pp.add_printer('odin_dynamic_array', r'^\[dynamic][a-zA-Z0-9:_]+', OdinSlice)
 pp.add_printer('odin_maybe', '^runtime::Maybe\\\x28', OdinUnion)
 
 gdb.printing.register_pretty_printer(gdb.current_objfile(), pp, replace=True)
