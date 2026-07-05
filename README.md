@@ -20,6 +20,8 @@ Pretty print builtin types for Odin lang
 Installation
 ------------
 
+Add the following to your `.gdbinit` config
+
 ```
 source <path to odin_pp.py>
 ```
@@ -33,7 +35,7 @@ Not all types has been implemented yet
 
 ### Custom user defined types
 
-Currently I have not made any public API available to integrate user defined types
+Currently I have not made any public API available to integrate user defined types (especially union)
 
 ### Code generator
 
