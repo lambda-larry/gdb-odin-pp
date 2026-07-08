@@ -12,7 +12,7 @@ Pretty print builtin types for Odin lang
 - [ ] endian specific float
 - [ ] vector and matrix
 - [ ] complex and quaternion
-- [ ] rune
+- [x] rune
 - [ ] typeid
 - [ ] any
 

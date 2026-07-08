@@ -45,11 +45,21 @@ class OdinUnion(gdb.ValuePrinter):
         return self.__val[f'v{tag}']
 
 
+class OdinRune(gdb.ValuePrinter):
+    def __init__(self, val):
+        self.__val = val
+
+    def to_string(self):
+        codepoint = int(self.__val)
+        return f'{chr(codepoint)}'
+
+
 pp = gdb.printing.RegexpCollectionPrettyPrinter('odin')
 
 pp.add_printer('odin_string', '^string$', OdinString)
 pp.add_printer('odin_slice', r'^\[][a-zA-Z0-9:_]+', OdinSlice)
 pp.add_printer('odin_dynamic_array', r'^\[dynamic][a-zA-Z0-9:_]+', OdinSlice)
 pp.add_printer('odin_maybe', '^runtime::Maybe\\\x28', OdinUnion)
+pp.add_printer('odin_rune', '^rune$', OdinRune)
 
 gdb.printing.register_pretty_printer(gdb.current_objfile(), pp, replace=True)
