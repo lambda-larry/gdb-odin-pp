@@ -62,4 +62,8 @@ pp.add_printer('odin_dynamic_array', r'^\[dynamic][a-zA-Z0-9:_]+', OdinSlice)
 pp.add_printer('odin_maybe', '^runtime::Maybe\\\x28', OdinUnion)
 pp.add_printer('odin_rune', '^rune$', OdinRune)
 
+# Anonymous union
+pp.add_printer('odin_union',        '^union{.*}$',        OdinUnion)
+pp.add_printer('odin_union_no_nil', '^union#no_nil{.*}$', OdinUnion)
+
 gdb.printing.register_pretty_printer(gdb.current_objfile(), pp, replace=True)
